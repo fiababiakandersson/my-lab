@@ -1,11 +1,15 @@
 package se.yrgo.schedule;
 
+import static java.nio.charset.StandardCharsets.*;
+
 import javax.servlet.http.*;
-import static java.nio.charset.StandardCharsets.UTF_8;
 
 /**
- * <p>Parses a request for the Servlet</p>
- * <p>Tries to detect:
+ * <p>
+ * Parses a request for the Servlet
+ * </p>
+ * <p>
+ * Tries to detect:
  * <ul>
  * <li>The type (all|day|teacher_id|day and teacher_id</li>
  * <li>day</li>
@@ -22,7 +26,7 @@ public class ParamParser {
     DAY,
     TEACHER_ID_AND_DAY
   }
-  
+
   private HttpServletRequest request;
   private QueryType type;
   private String teacherId;
@@ -32,6 +36,7 @@ public class ParamParser {
 
   /**
    * Constructs a new ParamParser from the Servlet's request object
+   * 
    * @param request The Servlet's request, whose GET params will be parsed
    */
   public ParamParser(HttpServletRequest request) {
@@ -39,25 +44,33 @@ public class ParamParser {
     parseValues();
     parseType();
     parseContentType();
-    /*System.out.printf("Type: %s teacherId: %s day: %s Content-Type: %s Format: %s\n",
-      type.toString(), teacherId, day, contentType, format); */
+    /*
+     * System.out.
+     * printf("Type: %s teacherId: %s day: %s Content-Type: %s Format: %s\n",
+     * type.toString(), teacherId, day, contentType, format);
+     */
   }
 
   private void parseContentType() {
-    // Default to text/html
-    if (format == null) {
+    if (format != null && format.equalsIgnoreCase("json")) {
+      contentType = "application/json;charset=" + UTF_8.name();
+    } else if (format != null && format.equalsIgnoreCase("xml")) {
+      contentType = "application/xml;charset=" + UTF_8.name();
+    } // Default to text/html
+    else { // format param missing or illegal format!
       contentType = "text/html;charset=" + UTF_8.name();
     }
   }
 
   /**
    * Returns the content type of the request
+   * 
    * @return The content-type as a String, or "html" (default) if none is given
    */
   public String contentType() {
     return contentType;
   }
-  
+
   private void parseType() {
     if (teacherId == null && day == null) {
       type = QueryType.ALL;
@@ -69,7 +82,7 @@ public class ParamParser {
       type = QueryType.TEACHER_ID;
     }
   }
-  
+
   private void parseValues() {
     this.format = request.getParameter("format");
     if (format != null) {
@@ -78,11 +91,12 @@ public class ParamParser {
       format = "html";
     }
     this.day = request.getParameter("day");
-    this.teacherId = request.getParameter("substitute_id");    
+    this.teacherId = request.getParameter("substitute_id");
   }
 
   /**
    * Returns the format from the request param format, as a String
+   * 
    * @return The format request parameter, as a String, or null if none is given
    */
   public String format() {
@@ -91,7 +105,9 @@ public class ParamParser {
 
   /**
    * Returns the day paramteter of the request
-   * @return The day parameter of the request, as a String, or null if none is given
+   * 
+   * @return The day parameter of the request, as a String, or null if none is
+   *         given
    */
   public String day() {
     return day;
@@ -99,6 +115,7 @@ public class ParamParser {
 
   /**
    * Returns the teacherId (from the substitute_id parameter), as a String
+   * 
    * @return The teacherId, as a String, or null if none is given
    */
   public String teacherId() {
@@ -108,6 +125,7 @@ public class ParamParser {
   /**
    * Returns the QueryType of the request, one of ALL, TEACHER_ID, DAY, and,
    * TEACHER_ID_AND_DAY (an enum of this class)
+   * 
    * @return the QueryType found in this query. See the QueryType enum.
    */
   public QueryType type() {
@@ -116,11 +134,12 @@ public class ParamParser {
 
   /**
    * Returns this parser as a String representation. Mostly for debuggin.
+   * 
    * @return This ParamParser as a String representation.
    */
   @Override
   public String toString() {
     return String.format("Type: %s teacherId: %s day: %s Content-Type: %s Format: %s\n",
-                         type.toString(), teacherId, day, contentType, format);
+        type.toString(), teacherId, day, contentType, format);
   }
 }
