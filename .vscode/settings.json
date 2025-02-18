@@ -1,0 +1,8 @@
+{
+  "java.project.sourcePaths": ["www\\WEB-INF\\classes"],
+  "java.project.referencedLibraries": [
+    "winstone.jar",
+    "c:\\Users\\Fia\\Desktop\\courses\\Systemintegration\\Inlämningar\\my-lab\\www\\WEB-INF\\lib\\sqlite-jdbc-3.48.0.0.jar",
+    "c:\\Users\\Fia\\Desktop\\courses\\Systemintegration\\Inlämningar\\my-lab\\www\\WEB-INF\\lib\\org.json.jar"
+  ]
+}
