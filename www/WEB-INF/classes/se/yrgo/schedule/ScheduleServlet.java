@@ -30,7 +30,14 @@ public class ScheduleServlet extends HttpServlet {
     request.setCharacterEncoding(UTF_8.name());
 
     // Parse the arguments - see ParamParser class
-    ParamParser parser = new ParamParser(request);
+    ParamParser parser = null;
+    try {
+      parser = new ParamParser(request);
+    } catch (IllegalArgumentException e) {
+      response.sendError(HttpServletResponse.SC_BAD_REQUEST, e.getMessage());
+      return;
+    }
+
     // Set the content type (using the parser)
     response.setContentType(parser.contentType());
     // To write the response, we're using a PrintWriter

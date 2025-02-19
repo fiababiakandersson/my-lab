@@ -59,6 +59,7 @@ public class ParamParser {
     } // Default to text/html
     else { // format param missing or illegal format!
       contentType = "text/html;charset=" + UTF_8.name();
+      throw new IllegalArgumentException("Missing format parameter!");
     }
   }
 
