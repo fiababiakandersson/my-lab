@@ -17,3 +17,5 @@ buildNumber.properties
 .classpath
 
 *.class
+
+check_g_or_vg.sh

@@ -41,6 +41,7 @@ public class ScheduleServlet extends HttpServlet {
     Assignments db = AssignmentsFactory.getAssignments();
     // Start with an empty list (makes code easier)
     List<Assignment> assignments = new ArrayList<>();
+
     // Call the correct method, depending on the parser's type value
     try {
       StringBuilder table;
@@ -61,6 +62,13 @@ public class ScheduleServlet extends HttpServlet {
       out.println("Error fetching data: " + e.getMessage());
       System.err.println("Error: " + e);
       e.printStackTrace();
+    }
+    // Throw error if no assignments exists
+    if (assignments.isEmpty()) {
+      response.setStatus(HttpServletResponse.SC_NOT_FOUND);
+      out.println("404 Not Found - No assignments found.");
+      out.close();
+      return;
     }
     // Get a formatter, by asking the parser for the format (defaults to HTML)
     try {
