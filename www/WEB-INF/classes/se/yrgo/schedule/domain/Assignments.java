@@ -1,6 +1,8 @@
-package se.yrgo.schedule;
+package se.yrgo.schedule.domain;
 
 import java.util.List;
+
+import se.yrgo.schedule.exceptions.*;
 
 /**
  * <p>A small interface declaring the access methods to the data.</p>

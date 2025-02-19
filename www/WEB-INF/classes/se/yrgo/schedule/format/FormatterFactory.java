@@ -1,4 +1,6 @@
-package se.yrgo.schedule;
+package se.yrgo.schedule.format;
+
+import se.yrgo.schedule.*;
 
 /**
  * A factory to get a formatter (only HTML is implemented)

@@ -1,4 +1,6 @@
-package se.yrgo.schedule;
+package se.yrgo.schedule.domain;
+
+import se.yrgo.schedule.*;
 
 /**
  * Represents an assignment for at substitute teacher,

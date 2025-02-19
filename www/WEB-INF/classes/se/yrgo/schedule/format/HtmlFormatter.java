@@ -1,6 +1,9 @@
-package se.yrgo.schedule;
+package se.yrgo.schedule.format;
 
 import java.util.List;
+
+import se.yrgo.schedule.*;
+import se.yrgo.schedule.domain.*;
 
 /**
  * A class implementing the Formatter interface. Formats a List of Assignment
