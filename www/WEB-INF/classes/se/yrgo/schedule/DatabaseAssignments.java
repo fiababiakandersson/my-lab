@@ -1,11 +1,7 @@
-package se.yrgo.schedule.data;
+package se.yrgo.schedule;
 
 import java.sql.*;
 import java.util.*;
-
-import se.yrgo.schedule.*;
-import se.yrgo.schedule.domain.*;
-import se.yrgo.schedule.exceptions.*;
 
 /**
  * An implementation of the Assignments interface

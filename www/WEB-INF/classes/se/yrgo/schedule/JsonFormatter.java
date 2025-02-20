@@ -1,18 +1,16 @@
-package se.yrgo.schedule.format;
+package se.yrgo.schedule;
 
 import java.util.*;
 
 import org.json.*;
 
-import se.yrgo.schedule.*;
-import se.yrgo.schedule.domain.*;
-
-/**
- * A class implementing the Formatter interface. Formats a List of Assignment
- * to Json.
- *
- */
 public class JsonFormatter implements Formatter {
+
+  /**
+   * 
+   * A class implementing the Formatter interface. Formats a List of Assignment
+   * to JSON.
+   **/
 
   private JSONObject JSONAssignment(Assignment assignment) {
     JSONObject JSONAssignment = new JSONObject();
@@ -20,7 +18,6 @@ public class JsonFormatter implements Formatter {
 
     JSONObject JSONSubstitute = new JSONObject();
     JSONSubstitute.put("name", assignment.teacher().name());
-
     JSONAssignment.put("substitute", JSONSubstitute);
 
     JSONObject JSONSchool = new JSONObject();
@@ -28,11 +25,12 @@ public class JsonFormatter implements Formatter {
     JSONSchool.put("address", assignment.school().address());
 
     JSONAssignment.put("school", JSONSchool);
+
     return JSONAssignment;
+
   }
 
   public String format(List<Assignment> assignments) {
-
     if (assignments.size() == 0) {
       return "[]";
     } else {
@@ -42,6 +40,5 @@ public class JsonFormatter implements Formatter {
       }
       return JSON.toString(2);
     }
-
   }
 }

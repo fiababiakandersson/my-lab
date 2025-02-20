@@ -1,4 +1,4 @@
-package se.yrgo.schedule.domain;
+package se.yrgo.schedule;
 
 public class Substitute {
     private String name;

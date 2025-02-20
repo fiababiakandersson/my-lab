@@ -1,4 +1,4 @@
-package se.yrgo.schedule.servlet;
+package se.yrgo.schedule;
 
 import static java.nio.charset.StandardCharsets.*;
 
@@ -56,10 +56,10 @@ public class ParamParser {
       contentType = "application/json;charset=" + UTF_8.name();
     } else if (format != null && format.equalsIgnoreCase("xml")) {
       contentType = "application/xml;charset=" + UTF_8.name();
-    } // Default to text/html
-    else { // format param missing or illegal format!
+    } else {
       contentType = "text/html;charset=" + UTF_8.name();
-      throw new IllegalArgumentException("Missing format parameter!");
+      throw new IllegalArgumentException("Missing format parameter!"); // Throw exception if no format parameter is
+                                                                       // found
     }
   }
 

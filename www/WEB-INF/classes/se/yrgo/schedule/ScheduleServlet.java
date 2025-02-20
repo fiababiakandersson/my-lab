@@ -1,4 +1,4 @@
-package se.yrgo.schedule.servlet;
+package se.yrgo.schedule;
 
 import static java.nio.charset.StandardCharsets.*;
 
@@ -7,13 +7,6 @@ import java.util.*;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
-
-import se.yrgo.schedule.*;
-import se.yrgo.schedule.data.*;
-import se.yrgo.schedule.domain.*;
-import se.yrgo.schedule.exceptions.*;
-import se.yrgo.schedule.format.*;
-import se.yrgo.schedule.format.Formatter;
 
 /**
  * <p>
@@ -37,6 +30,7 @@ public class ScheduleServlet extends HttpServlet {
     request.setCharacterEncoding(UTF_8.name());
 
     // Parse the arguments - see ParamParser class
+    // Send 400 error if we catch IllegalArgumentException
     ParamParser parser = null;
     try {
       parser = new ParamParser(request);
@@ -77,7 +71,7 @@ public class ScheduleServlet extends HttpServlet {
       System.err.println("Error: " + e);
       e.printStackTrace();
     }
-    // Throw error if no assignments exists
+    // Throw 404 error if no assignments exists
     if (assignments.isEmpty()) {
       response.setStatus(HttpServletResponse.SC_NOT_FOUND);
       out.println("404 Not Found - No assignments found.");
