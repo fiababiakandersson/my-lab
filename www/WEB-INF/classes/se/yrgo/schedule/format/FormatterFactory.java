@@ -1,4 +1,4 @@
-package se.yrgo.schedule;
+package se.yrgo.schedule.format;
 
 /**
  * A factory to get a formatter (only HTML is implemented)
@@ -6,7 +6,6 @@ package se.yrgo.schedule;
 public class FormatterFactory {
 
   private static Formatter XML_FORMATTER = new XMLFormatter();
-  private static Formatter HTML_FORMATTER = new HtmlFormatter();
   private static Formatter JSON_FORMATTER = new JsonFormatter();
 
   /**

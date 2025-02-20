@@ -1,6 +1,8 @@
-package se.yrgo.schedule;
+package se.yrgo.schedule.domain;
 
 import java.util.*;
+
+import se.yrgo.schedule.exceptions.*;
 
 /**
  * <p>

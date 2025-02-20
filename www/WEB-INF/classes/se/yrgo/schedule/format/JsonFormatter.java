@@ -1,8 +1,10 @@
-package se.yrgo.schedule;
+package se.yrgo.schedule.format;
 
 import java.util.*;
 
 import org.json.*;
+
+import se.yrgo.schedule.domain.*;
 
 public class JsonFormatter implements Formatter {
 

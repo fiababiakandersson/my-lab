@@ -1,4 +1,4 @@
-package se.yrgo.schedule;
+package se.yrgo.schedule.exceptions;
 
 public class AccessException extends Exception {
   public AccessException(String msg) {
