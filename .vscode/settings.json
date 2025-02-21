@@ -1,8 +1,21 @@
 {
+  // "java.project.outputPath": "bin",
+
+  "files.exclude": {
+    "/.git": true,
+    "/.svn": true,
+    "/.hg": true,
+    "/CVS": true,
+    "/.DS_Store": true,
+    "/Thumbs.db": true,
+    "*/.class": true
+  },
+
   "java.project.sourcePaths": ["www\\WEB-INF\\classes"],
   "java.project.referencedLibraries": [
     "winstone.jar",
     "c:\\Users\\Fia\\Desktop\\courses\\Systemintegration\\Inlämningar\\my-lab\\www\\WEB-INF\\lib\\sqlite-jdbc-3.48.0.0.jar",
-    "c:\\Users\\Fia\\Desktop\\courses\\Systemintegration\\Inlämningar\\my-lab\\www\\WEB-INF\\lib\\org.json.jar"
+    "c:\\Users\\Fia\\Desktop\\courses\\Systemintegration\\Inlämningar\\my-lab\\www\\WEB-INF\\lib\\org.json.jar",
+    "c:\\Users\\Fia\\Desktop\\courses\\Systemintegration\\Inlämningar\\my-lab\\winstone.jar"
   ]
 }

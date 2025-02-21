@@ -58,7 +58,7 @@ public class ScheduleServlet extends HttpServlet {
 
     // Call the correct method, depending on the parser's type value
     try {
-      StringBuilder table;
+      // StringBuilder table;
       switch (parser.type()) {
         case ALL:
           assignments = db.all();
